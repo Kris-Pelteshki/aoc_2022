@@ -11,6 +11,19 @@ const splitBy = (seperator: string) => (str: string) => str.split(seperator);
 
 export const splitBySpace = splitBy(" ");
 export const splitByLine = splitBy("\n");
+export const splitByCharacter = splitBy("");
+
+function* chunksGen<T>(arr: any[], amountPerChunk: number): Generator<T[]> {
+  for (let i = 0; i < arr.length; i += amountPerChunk) {
+    yield arr.slice(i, i + amountPerChunk);
+  }
+}
+
+export const chunks = <T>(arr: T[], amountPerChunk: number) => {
+  const iterator = chunksGen<T>(arr, amountPerChunk);
+
+  return [...iterator];
+};
 
 type Fn = (...args: any) => any;
 
