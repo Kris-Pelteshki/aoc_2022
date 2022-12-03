@@ -1,11 +1,4 @@
-import {
-  chunks,
-  flow,
-  map,
-  splitByCharacter,
-  splitByLine,
-  sum,
-} from "../utils";
+import { chunks, flow, splitByCharacter, splitByLine, sum } from "../utils";
 import { input_3 } from "./input";
 
 (function () {
