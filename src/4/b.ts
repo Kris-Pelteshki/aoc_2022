@@ -28,7 +28,7 @@ import input from "./input";
     let total = 0;
 
     pairs.forEach((pair) => {
-      if (hasOverlap(...pair)) {
+      if (hasOverlap(pair[0], pair[1])) {
         total++;
       }
     });

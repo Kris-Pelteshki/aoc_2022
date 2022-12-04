@@ -20,7 +20,7 @@ const input_1 = __importDefault(require("./input"));
     const sumOfSubsets = (pairs) => {
         let total = 0;
         pairs.forEach((pair) => {
-            if (isSubset(...pair)) {
+            if (isSubset(pair[0], pair[1])) {
                 total++;
             }
         });
