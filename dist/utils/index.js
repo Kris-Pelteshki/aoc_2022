@@ -18,3 +18,4 @@ __exportStar(require("./sum"), exports);
 __exportStar(require("./split"), exports);
 __exportStar(require("./chunks"), exports);
 __exportStar(require("./flow"), exports);
+__exportStar(require("./countBy"), exports);

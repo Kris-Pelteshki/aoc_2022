@@ -17,15 +17,10 @@ const input_1 = __importDefault(require("./input"));
         }
         return false;
     };
-    const sum = (pairs) => {
-        let total = 0;
-        pairs.forEach((pair) => {
-            if (hasOverlap(pair[0], pair[1])) {
-                total++;
-            }
-        });
-        return total;
+    const sumOfOverlaps = (pairs) => {
+        const counts = (0, utils_1.countBy)(pairs, (pair) => hasOverlap(pair[0], pair[1]));
+        return counts.get(true);
     };
-    const result = (0, utils_1.flow)(input_1.default).pipe(utils_1.splitByLine, toRanges, sum);
+    const result = (0, utils_1.flow)(input_1.default).pipe(utils_1.splitByLine, toRanges, sumOfOverlaps);
     console.log(result);
 })();

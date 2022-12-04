@@ -1,4 +1,4 @@
-import { flow, splitByLine } from "../utils";
+import { countBy, flow, splitByLine } from "../utils";
 import input from "./input";
 
 (function () {
@@ -24,19 +24,12 @@ import input from "./input";
     return false;
   };
 
-  const sum = (pairs: RangeLine[]) => {
-    let total = 0;
-
-    pairs.forEach((pair) => {
-      if (hasOverlap(pair[0], pair[1])) {
-        total++;
-      }
-    });
-
-    return total;
+  const sumOfOverlaps = (pairs: RangeLine[]) => {
+    const counts = countBy(pairs, (pair) => hasOverlap(pair[0], pair[1]));
+    return counts.get(true);
   };
 
-  const result = flow(input).pipe(splitByLine, toRanges, sum);
+  const result = flow(input).pipe(splitByLine, toRanges, sumOfOverlaps);
 
   console.log(result);
 })();
