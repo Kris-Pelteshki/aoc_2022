@@ -1,5 +1,5 @@
 import { sum } from "../utils";
-import { input_2 } from "./input";
+import input from "./input";
 
 (function () {
   enum Shapes {
@@ -51,7 +51,7 @@ import { input_2 } from "./input";
     }
   };
 
-  const rounds = input_2.split("\n").map((str: string): RoundInput => {
+  const rounds = input.split("\n").map((str: string): RoundInput => {
     const [first, second] = str.split(" ") as [Inputs, ExpectedOutcome];
 
     return [InputToShape[first], InputToResult[second]];

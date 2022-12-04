@@ -1,7 +1,10 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const utils_1 = require("../utils");
-const input_1 = require("./input");
+const input_1 = __importDefault(require("./input"));
 (function () {
     let Shapes;
     (function (Shapes) {
@@ -43,7 +46,7 @@ const input_1 = require("./input");
                 return Shapes.Scissors;
         }
     };
-    const rounds = input_1.input_2.split("\n").map((str) => {
+    const rounds = input_1.default.split("\n").map((str) => {
         const [first, second] = str.split(" ");
         return [InputToShape[first], InputToResult[second]];
     });

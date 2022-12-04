@@ -1,5 +1,5 @@
 import { flow, splitByCharacter, splitByLine, sum } from "../utils";
-import { input_3 } from "./input";
+import input from "./input";
 
 (function () {
   const ACharCode = "a".charCodeAt(0);
@@ -23,7 +23,7 @@ import { input_3 } from "./input";
     );
   };
 
-  const result = flow(input_3).pipe(
+  const result = flow(input).pipe(
     splitByLine,
     (items: string[]) => items.map(findMatchingLetter).map(letterToNumber),
     sum

@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.input_2 = void 0;
-exports.input_2 = `A X
+exports.default = `A X
 B X
 C X
 C Y

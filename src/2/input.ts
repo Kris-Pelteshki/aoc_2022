@@ -1,4 +1,4 @@
-export const input_2 = `A X
+export default `A X
 B X
 C X
 C Y

@@ -1,1 +1,1 @@
-export const input_4 = ``;
+export default ``;

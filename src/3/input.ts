@@ -1,4 +1,4 @@
-export const input_3 = `vJrrdQlGBQWPTBTF
+export default `vJrrdQlGBQWPTBTF
 fcpTMnMqMfTnZpgMfPbFBWzHPpBPzbCPPH
 mcVMfcsqZgmgVcmfgcmZmqZNJhrlrdhNhDdrRRJSvDTRhJlD
 pMFRmLwHMbRPmMbPPddvqqrrNSTFVttdrN

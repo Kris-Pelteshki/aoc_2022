@@ -1,7 +1,10 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const utils_1 = require("../utils");
-const input_1 = require("./input");
+const input_1 = __importDefault(require("./input"));
 (function () {
     const ACharCode = "a".charCodeAt(0);
     const ACapitalCaseCharCode = "A".charCodeAt(0);
@@ -18,6 +21,6 @@ const input_1 = require("./input");
         const second = items.slice(middle);
         return ((0, utils_1.splitByCharacter)(first).find((letter) => second.includes(letter)) || "");
     };
-    const result = (0, utils_1.flow)(input_1.input_3).pipe(utils_1.splitByLine, (items) => items.map(findMatchingLetter).map(letterToNumber), utils_1.sum);
+    const result = (0, utils_1.flow)(input_1.default).pipe(utils_1.splitByLine, (items) => items.map(findMatchingLetter).map(letterToNumber), utils_1.sum);
     console.log(result);
 })();

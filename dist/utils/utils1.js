@@ -19,8 +19,7 @@ function* chunksGen(arr, amountPerChunk) {
     }
 }
 const chunks = (arr, amountPerChunk) => {
-    const iterator = chunksGen(arr, amountPerChunk);
-    return [...iterator];
+    return [...chunksGen(arr, amountPerChunk)];
 };
 exports.chunks = chunks;
 const flow = (input) => {

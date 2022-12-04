@@ -1,8 +1,8 @@
-import { input_12 } from "./input";
+import { flow, splitByLine } from "../utils";
+import input from "./input";
 
 (function () {
-  const input = input_12;
+  const result = flow(input).pipe(splitByLine);
 
-  const result = 0;
   console.log(result);
 })();
