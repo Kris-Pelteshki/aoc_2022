@@ -16,6 +16,7 @@ import input from "./input";
   });
 
   const stacks = new Map<number, string[]>();
+  charPositions.forEach((_, idx) => stacks.set(idx + 1, []));
 
   stackLines.forEach((line) => {
     charPositions.forEach((charPos, stackIdx) => {
@@ -42,12 +43,10 @@ import input from "./input";
     }
   });
 
-  const result = Array.from(stacks.entries())
-    .sort((a, b) => a[0] - b[0])
-    .reduce((str, [_, stack]) => {
-      str += stack[0];
-      return str;
-    }, "");
+  const result = Array.from(stacks.values()).reduce(
+    (str, stack) => str + stack[0],
+    ""
+  );
 
   console.log(result);
 })();

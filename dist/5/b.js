@@ -18,6 +18,7 @@ const input_1 = __importDefault(require("./input"));
         }
     });
     const stacks = new Map();
+    charPositions.forEach((_, idx) => stacks.set(idx + 1, []));
     stackLines.forEach((line) => {
         charPositions.forEach((charPos, stackIdx) => {
             const stackKey = stackIdx + 1;
@@ -38,11 +39,6 @@ const input_1 = __importDefault(require("./input"));
             toStack.unshift(...moved);
         }
     });
-    const result = Array.from(stacks.entries())
-        .sort((a, b) => a[0] - b[0])
-        .reduce((str, [_, stack]) => {
-        str += stack[0];
-        return str;
-    }, "");
+    const result = Array.from(stacks.values()).reduce((str, stack) => str + stack[0], "");
     console.log(result);
 })();
