@@ -19,3 +19,4 @@ __exportStar(require("./split"), exports);
 __exportStar(require("./chunks"), exports);
 __exportStar(require("./flow"), exports);
 __exportStar(require("./countBy"), exports);
+__exportStar(require("./isUniqueSequenceOfElements"), exports);
