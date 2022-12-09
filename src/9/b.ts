@@ -105,7 +105,7 @@ import input from "./input";
         .slice(0, 200)
         .join("\n");
     };
-    console.log(makeGraph(visitedPoints));
+    // console.log(makeGraph(visitedPoints));
     return new Set(visitedPoints.map((p) => p.join(","))).size;
   };
 

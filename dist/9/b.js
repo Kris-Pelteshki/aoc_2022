@@ -86,7 +86,7 @@ const input_1 = __importDefault(require("./input"));
                 .slice(0, 200)
                 .join("\n");
         };
-        console.log(makeGraph(visitedPoints));
+        // console.log(makeGraph(visitedPoints));
         return new Set(visitedPoints.map((p) => p.join(","))).size;
     };
     const result = (0, utils_1.flow)(input_1.default).pipe(utils_1.splitByLine, parseSteps, runSteps);
