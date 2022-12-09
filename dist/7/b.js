@@ -30,12 +30,10 @@ const input_1 = __importDefault(require("./input"));
             this.children = this.children.filter((x) => x.name !== name);
         }
         get files() {
-            var _a;
-            return ((_a = this.children) === null || _a === void 0 ? void 0 : _a.filter((x) => x instanceof File)) || [];
+            return this.children?.filter((x) => x instanceof File) || [];
         }
         get directories() {
-            var _a;
-            return (((_a = this.children) === null || _a === void 0 ? void 0 : _a.filter((x) => x instanceof Directory)) ||
+            return (this.children?.filter((x) => x instanceof Directory) ||
                 []);
         }
         get hasFiles() {
@@ -131,7 +129,7 @@ const input_1 = __importDefault(require("./input"));
     const sortedDirectoriesGreaterThanNeededSize = fileTree.directories
         .filter((x) => x.totalSize >= spaceNeeded)
         .sort((a, b) => a.totalSize - b.totalSize);
-    const size = sortedDirectoriesGreaterThanNeededSize === null || sortedDirectoriesGreaterThanNeededSize === void 0 ? void 0 : sortedDirectoriesGreaterThanNeededSize[0].totalSize;
+    const size = sortedDirectoriesGreaterThanNeededSize?.[0].totalSize;
     console.log(spaceAvailable);
     console.log(spaceNeeded);
     console.log(size);

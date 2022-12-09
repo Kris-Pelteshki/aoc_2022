@@ -28,12 +28,10 @@ const input_1 = __importDefault(require("./input"));
             this.children = this.children.filter((x) => x.name !== name);
         }
         get files() {
-            var _a;
-            return ((_a = this.children) === null || _a === void 0 ? void 0 : _a.filter((x) => x instanceof File)) || [];
+            return this.children?.filter((x) => x instanceof File) || [];
         }
         get directories() {
-            var _a;
-            return (((_a = this.children) === null || _a === void 0 ? void 0 : _a.filter((x) => x instanceof Directory)) ||
+            return (this.children?.filter((x) => x instanceof Directory) ||
                 []);
         }
         get hasFiles() {
