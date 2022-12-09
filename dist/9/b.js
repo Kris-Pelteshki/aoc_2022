@@ -57,10 +57,8 @@ const input_1 = __importDefault(require("./input"));
                     const box = getBoxAroundPoint(point);
                     if (!isPointInBox(pointInfront, box)) {
                         const [dx, dy] = differenceBetweenPoints(pointInfront, point);
-                        const [x, y] = [
-                            Math.sign(dx) * Math.min(1, Math.abs(dx)),
-                            Math.sign(dy) * Math.min(1, Math.abs(dy)),
-                        ];
+                        const x = Math.sign(dx) * Math.min(1, Math.abs(dx));
+                        const y = Math.sign(dy) * Math.min(1, Math.abs(dy));
                         points[j] = [point[0] + x, point[1] + y];
                         if (j === points.length - 1) {
                             visitedPoints.push(points[j]);
