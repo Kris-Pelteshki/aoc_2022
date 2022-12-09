@@ -70,22 +70,23 @@ const input_1 = __importDefault(require("./input"));
             }
         }
         const makeGraph = (points) => {
-            const rangeX = 30;
-            const rangeY = 30;
+            const rangeX = 260;
+            const rangeY = 1000;
             const centerX = Math.floor(rangeX / 2);
             const centerY = Math.floor(rangeY / 2);
             const graph = new Array(rangeX)
                 .fill(0)
-                .map(() => new Array(rangeY).fill("-"));
+                .map(() => new Array(rangeY).fill("."));
             for (const [x, y] of points) {
                 graph[y + centerX][x + centerY] = "#";
             }
             return graph
                 .reverse()
-                .map((row) => row.join(""))
+                .map((row) => row.join("").slice(65, 550))
+                .slice(0, 200)
                 .join("\n");
         };
-        // console.log(makeGraph(visitedPoints));
+        console.log(makeGraph(visitedPoints));
         return new Set(visitedPoints.map((p) => p.join(","))).size;
     };
     const result = (0, utils_1.flow)(input_1.default).pipe(utils_1.splitByLine, parseSteps, runSteps);
