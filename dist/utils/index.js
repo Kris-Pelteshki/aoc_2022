@@ -20,3 +20,4 @@ __exportStar(require("./chunks"), exports);
 __exportStar(require("./flow"), exports);
 __exportStar(require("./countBy"), exports);
 __exportStar(require("./isUniqueSequenceOfElements"), exports);
+__exportStar(require("./stack"), exports);

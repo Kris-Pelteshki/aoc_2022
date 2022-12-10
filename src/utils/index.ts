@@ -4,3 +4,4 @@ export * from "./chunks";
 export * from "./flow";
 export * from "./countBy";
 export * from "./isUniqueSequenceOfElements";
+export * from "./stack";
