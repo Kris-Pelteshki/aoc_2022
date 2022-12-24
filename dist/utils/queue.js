@@ -11,13 +11,16 @@ class Queue {
             this.tail = items.length;
         }
     }
+    /**
+     * Adds an item to the end of the queue
+     */
     enqueue(item) {
         this.items[this.tail++] = item;
     }
+    /**
+     * @returns {T} Returns the item at the front of the queue
+     */
     dequeue() {
-        if (this.head === this.tail) {
-            return undefined;
-        }
         const item = this.items[this.head];
         delete this.items[this.head++];
         return item;

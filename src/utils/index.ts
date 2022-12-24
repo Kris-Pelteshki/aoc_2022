@@ -9,3 +9,4 @@ export * from "./queue";
 export * from "./emitter";
 export * from "./getPrimeFactors";
 export * from "./product";
+export * from "./pathFinding";

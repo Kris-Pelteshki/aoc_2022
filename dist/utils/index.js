@@ -25,3 +25,4 @@ __exportStar(require("./queue"), exports);
 __exportStar(require("./emitter"), exports);
 __exportStar(require("./getPrimeFactors"), exports);
 __exportStar(require("./product"), exports);
+__exportStar(require("./pathFinding"), exports);

@@ -10,15 +10,17 @@ export class Queue<T> {
     }
   }
 
+  /**
+   * Adds an item to the end of the queue
+   */
   enqueue(item: T) {
     this.items[this.tail++] = item;
   }
 
-  dequeue(): T | undefined {
-    if (this.head === this.tail) {
-      return undefined;
-    }
-
+  /**
+   * @returns {T} Returns the item at the front of the queue
+   */
+  dequeue(): T {
     const item = this.items[this.head];
     delete this.items[this.head++];
     return item;
