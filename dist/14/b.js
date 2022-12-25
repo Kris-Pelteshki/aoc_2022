@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const utils_1 = require("../utils");
 const input_1 = __importDefault(require("./input"));
 (function () {
-    const PointCloudMap = new Set();
+    const PointCloud = new Set();
     const START_POINT = [500, 0];
     const FLOOR_DISTANCE_FROM_MAX_Y = 2;
     let minX = START_POINT[0];
@@ -70,12 +70,12 @@ const input_1 = __importDefault(require("./input"));
             const points = getAllPointsFromEdges(edges);
             points.forEach((point) => {
                 checkAndSetMinMax(point);
-                PointCloudMap.add(`${point[0]},${point[1]}`);
+                PointCloud.add(`${point[0]},${point[1]}`);
             });
         });
         // fill floor
         for (let i = minX - 1000; i <= maxX + 1000; i++) {
-            PointCloudMap.add(`${i},${maxY + FLOOR_DISTANCE_FROM_MAX_Y}`);
+            PointCloud.add(`${i},${maxY + FLOOR_DISTANCE_FROM_MAX_Y}`);
         }
     };
     fillPointCloud();
@@ -83,7 +83,7 @@ const input_1 = __importDefault(require("./input"));
     // console.log(PointCloudMap);
     const isPointTaken = (x, y) => {
         const pointKey = `${x},${y}`;
-        return PointCloudMap.has(pointKey);
+        return PointCloud.has(pointKey);
     };
     const isPointOutOfBounds = (x, y) => {
         return x < minX || x > maxX || y < minY || y > maxY;
@@ -111,7 +111,7 @@ const input_1 = __importDefault(require("./input"));
                 if (y === START_POINT[1]) {
                     break;
                 }
-                PointCloudMap.add(`${x},${y}`);
+                PointCloud.add(`${x},${y}`);
                 resetToStart();
                 continue;
             }

@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const utils_1 = require("../utils");
 const input_1 = __importDefault(require("./input"));
 (function () {
-    const PointCloudMap = new Set();
+    const PointCloud = new Set();
     const START_POINT = [500, 0];
     let minX = 0;
     let maxX = 0;
@@ -69,14 +69,14 @@ const input_1 = __importDefault(require("./input"));
             const points = getAllPointsFromEdges(edges);
             points.forEach((point) => {
                 checkAndSetMinMax(point);
-                PointCloudMap.add(`${point[0]},${point[1]}`);
+                PointCloud.add(`${point[0]},${point[1]}`);
             });
         });
     };
     fillPointCloud();
     const isPointTaken = (x, y) => {
         const pointKey = `${x},${y}`;
-        return PointCloudMap.has(pointKey);
+        return PointCloud.has(pointKey);
     };
     const isPointOutOfBounds = (x, y) => {
         return x < minX || x > maxX || y < minY || y > maxY;
@@ -101,7 +101,7 @@ const input_1 = __importDefault(require("./input"));
             const isBlockedLeft = isPointTaken(x - 1, nextY);
             const isBlockedRight = isPointTaken(x + 1, nextY);
             if (isBlockedLeft && isBlockedRight) {
-                PointCloudMap.add(`${x},${y}`);
+                PointCloud.add(`${x},${y}`);
                 resetToStart();
                 continue;
             }

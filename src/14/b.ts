@@ -4,7 +4,7 @@ import input from "./input";
 (function () {
   type Point = [number, number];
 
-  const PointCloudMap = new Set<string>();
+  const PointCloud = new Set<string>();
   const START_POINT: Point = [500, 0];
   const FLOOR_DISTANCE_FROM_MAX_Y = 2;
   let minX: number = START_POINT[0];
@@ -87,13 +87,13 @@ import input from "./input";
 
       points.forEach((point) => {
         checkAndSetMinMax(point);
-        PointCloudMap.add(`${point[0]},${point[1]}`);
+        PointCloud.add(`${point[0]},${point[1]}`);
       });
     });
 
     // fill floor
     for (let i = minX - 1000; i <= maxX + 1000; i++) {
-      PointCloudMap.add(`${i},${maxY + FLOOR_DISTANCE_FROM_MAX_Y}`);
+      PointCloud.add(`${i},${maxY + FLOOR_DISTANCE_FROM_MAX_Y}`);
     }
   };
 
@@ -103,7 +103,7 @@ import input from "./input";
 
   const isPointTaken = (x: number, y: number): boolean => {
     const pointKey = `${x},${y}`;
-    return PointCloudMap.has(pointKey);
+    return PointCloud.has(pointKey);
   };
 
   const isPointOutOfBounds = (x: number, y: number): boolean => {
@@ -140,7 +140,7 @@ import input from "./input";
           break;
         }
 
-        PointCloudMap.add(`${x},${y}`);
+        PointCloud.add(`${x},${y}`);
         resetToStart();
         continue;
       }
