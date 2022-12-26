@@ -32,8 +32,7 @@ export class PathFinding<ItemType = number> {
     endPoint: Point
   ): Path | undefined {
     const queue = new Queue([startPoint]);
-    const visited = new Set<string>(startPoint.toString());
-    const pathMap = new Map<string, Point>();
+    const visited = new Map<string, Point>();
 
     while (queue.size) {
       const currentPoint = queue.dequeue();
@@ -43,14 +42,13 @@ export class PathFinding<ItemType = number> {
         const neighborKey = neighbor.toString();
 
         if (!visited.has(neighborKey)) {
-          visited.add(neighborKey);
-          pathMap.set(neighborKey, currentPoint);
+          visited.set(neighborKey, currentPoint);
           queue.enqueue(neighbor);
         }
       });
     }
 
-    const path = PathFinding._getPath(pathMap, startPoint, endPoint);
+    const path = PathFinding._getPath(visited, startPoint, endPoint);
 
     return path;
   }

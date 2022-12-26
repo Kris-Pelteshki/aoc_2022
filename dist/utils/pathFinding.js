@@ -15,21 +15,19 @@ class PathFinding {
      */
     findPath(startPoint, endPoint) {
         const queue = new queue_1.Queue([startPoint]);
-        const visited = new Set(startPoint.toString());
-        const pathMap = new Map();
+        const visited = new Map();
         while (queue.size) {
             const currentPoint = queue.dequeue();
             const neighbors = this.getNeighbors(this.grid, currentPoint);
             neighbors.forEach((neighbor) => {
                 const neighborKey = neighbor.toString();
                 if (!visited.has(neighborKey)) {
-                    visited.add(neighborKey);
-                    pathMap.set(neighborKey, currentPoint);
+                    visited.set(neighborKey, currentPoint);
                     queue.enqueue(neighbor);
                 }
             });
         }
-        const path = PathFinding._getPath(pathMap, startPoint, endPoint);
+        const path = PathFinding._getPath(visited, startPoint, endPoint);
         return path;
     }
     static _getPath(pathMap, start, end) {
