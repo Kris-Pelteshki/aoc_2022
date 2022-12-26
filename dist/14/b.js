@@ -79,15 +79,7 @@ const input_1 = __importDefault(require("./input"));
         }
     };
     fillPointCloud();
-    // console.log(minX, maxX, minY, maxY);
-    // console.log(PointCloudMap);
-    const isPointTaken = (x, y) => {
-        const pointKey = `${x},${y}`;
-        return PointCloud.has(pointKey);
-    };
-    const isPointOutOfBounds = (x, y) => {
-        return x < minX || x > maxX || y < minY || y > maxY;
-    };
+    const isPointTaken = (x, y) => PointCloud.has(`${x},${y}`);
     const run = () => {
         console.time("loop");
         let x = START_POINT[0];
@@ -106,25 +98,22 @@ const input_1 = __importDefault(require("./input"));
                 continue;
             }
             const isBlockedLeft = isPointTaken(x - 1, nextY);
-            const isBlockedRight = isPointTaken(x + 1, nextY);
-            if (isBlockedLeft && isBlockedRight) {
-                if (y === START_POINT[1]) {
-                    break;
-                }
-                PointCloud.add(`${x},${y}`);
-                resetToStart();
-                continue;
-            }
             if (!isBlockedLeft) {
                 x -= 1;
                 y += 1;
                 continue;
             }
+            const isBlockedRight = isPointTaken(x + 1, nextY);
             if (!isBlockedRight) {
                 x += 1;
                 y += 1;
                 continue;
             }
+            if (y === START_POINT[1]) {
+                break;
+            }
+            PointCloud.add(`${x},${y}`);
+            resetToStart();
         }
         console.timeEnd("loop");
         console.log(sandCount + 1);

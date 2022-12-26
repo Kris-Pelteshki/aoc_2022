@@ -93,10 +93,7 @@ import input from "./input";
 
   fillPointCloud();
 
-  const isPointTaken = (x: number, y: number): boolean => {
-    const pointKey = `${x},${y}`;
-    return PointCloud.has(pointKey);
-  };
+  const isPointTaken = (x: number, y: number) => PointCloud.has(`${x},${y}`);
 
   const isPointOutOfBounds = (x: number, y: number): boolean => {
     return x < minX || x > maxX || y < minY || y > maxY;
@@ -117,33 +114,29 @@ import input from "./input";
 
     while (!isPointOutOfBounds(x, y)) {
       const nextY = y + 1;
-      const isBlockedUnder = isPointTaken(x, nextY);
 
+      const isBlockedUnder = isPointTaken(x, nextY);
       if (!isBlockedUnder) {
         y = nextY;
         continue;
       }
 
       const isBlockedLeft = isPointTaken(x - 1, nextY);
-      const isBlockedRight = isPointTaken(x + 1, nextY);
-
-      if (isBlockedLeft && isBlockedRight) {
-        PointCloud.add(`${x},${y}`);
-        resetToStart();
-        continue;
-      }
-
       if (!isBlockedLeft) {
         x -= 1;
         y += 1;
         continue;
       }
 
+      const isBlockedRight = isPointTaken(x + 1, nextY);
       if (!isBlockedRight) {
         x += 1;
         y += 1;
         continue;
       }
+
+      PointCloud.add(`${x},${y}`);
+      resetToStart();
     }
 
     console.timeEnd("loop");
