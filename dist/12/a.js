@@ -41,6 +41,6 @@ const input_1 = __importDefault(require("./input"));
     };
     const grid = parseToNumberGrid(input_1.default);
     const pathFinder = new pathFinding_1.PathFinding(grid, (0, pathFinding_1.createGetNeighborsStrategy)((currentHeight, neighborHeight) => currentHeight >= neighborHeight - MAX_HEIGHT_INCREMENT));
-    const result = pathFinder.findShortestPath(startLocation, endLocation);
+    const result = pathFinder.findPath(startLocation, endLocation);
     console.log(result?.length - 1);
 })();

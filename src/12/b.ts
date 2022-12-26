@@ -66,7 +66,7 @@ import input from "./input";
   );
 
   const lowestPointPaths = lowestPoints.map((lowestPoint) => {
-    return pathFinder.findShortestPath(lowestPoint, endLocation);
+    return pathFinder.findPath(lowestPoint, endLocation);
   });
 
   const pathLengths = lowestPointPaths

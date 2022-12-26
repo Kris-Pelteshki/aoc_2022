@@ -47,7 +47,7 @@ const input_1 = __importDefault(require("./input"));
     const grid = parseToNumberGrid(input_1.default);
     const pathFinder = new pathFinding_1.PathFinding(grid, (0, pathFinding_1.createGetNeighborsStrategy)((currentHeight, neighborHeight) => currentHeight >= neighborHeight - MAX_HEIGHT_INCREMENT));
     const lowestPointPaths = lowestPoints.map((lowestPoint) => {
-        return pathFinder.findShortestPath(lowestPoint, endLocation);
+        return pathFinder.findPath(lowestPoint, endLocation);
     });
     const pathLengths = lowestPointPaths
         .map((path) => (path?.length ? path?.length - 1 : 0))

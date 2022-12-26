@@ -13,7 +13,7 @@ class PathFinding {
      * @param endPoint
      * @returns {Path | undefined} Returns the path from start to end point or undefined if no path is found
      */
-    findShortestPath(startPoint, endPoint) {
+    findPath(startPoint, endPoint) {
         const queue = new queue_1.Queue([startPoint]);
         const visited = new Set(startPoint.toString());
         const pathMap = new Map();
@@ -40,9 +40,9 @@ class PathFinding {
             if (!currentPoint) {
                 return undefined;
             }
-            path.unshift(currentPoint);
+            path.push(currentPoint);
         }
-        return path;
+        return path.reverse();
     }
 }
 exports.PathFinding = PathFinding;

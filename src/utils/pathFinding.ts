@@ -27,7 +27,7 @@ export class PathFinding<ItemType = number> {
    * @param endPoint
    * @returns {Path | undefined} Returns the path from start to end point or undefined if no path is found
    */
-  public findShortestPath(
+  public findPath(
     startPoint: Point,
     endPoint: Point
   ): Path | undefined {
@@ -70,10 +70,10 @@ export class PathFinding<ItemType = number> {
         return undefined;
       }
 
-      path.unshift(currentPoint);
+      path.push(currentPoint);
     }
 
-    return path;
+    return path.reverse();
   }
 }
 

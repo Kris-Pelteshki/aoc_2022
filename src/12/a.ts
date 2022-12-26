@@ -59,7 +59,7 @@ import input from "./input";
     )
   );
 
-  const result = pathFinder.findShortestPath(startLocation, endLocation);
+  const result = pathFinder.findPath(startLocation, endLocation);
 
   console.log(result?.length! - 1);
 })();
