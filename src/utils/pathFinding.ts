@@ -27,15 +27,17 @@ export class PathFinding<ItemType = number> {
    * @param endPoint
    * @returns {Path | undefined} Returns the path from start to end point or undefined if no path is found
    */
-  public findPath(
-    startPoint: Point,
-    endPoint: Point
-  ): Path | undefined {
+  public findPath(startPoint: Point, endPoint: Point): Path | undefined {
     const queue = new Queue([startPoint]);
     const visited = new Map<string, Point>();
 
     while (queue.size) {
       const currentPoint = queue.dequeue();
+
+      if (currentPoint === null) {
+        break;
+      }
+
       const neighbors = this.getNeighbors(this.grid, currentPoint);
 
       neighbors.forEach((neighbor) => {

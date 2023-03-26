@@ -7,9 +7,6 @@ const utils_1 = require("../utils");
 const input_1 = __importDefault(require("./input"));
 (function () {
     const monkeyEmitter = new utils_1.EventEmitter();
-    // monkeyEmitter.onAny((eventName, params) => {
-    //   console.log(eventName, params);
-    // });
     class Monkey {
         constructor(textInput, options) {
             this._inspectCount = 0;
@@ -54,7 +51,7 @@ const input_1 = __importDefault(require("./input"));
         }
         inspect() {
             const item = this.items.dequeue();
-            if (item === undefined) {
+            if (item === null) {
                 return;
             }
             const newItem = this.operation(item);

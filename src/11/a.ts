@@ -12,10 +12,6 @@ import input from "./input";
     throwToMonkey: MonkeyThrowEvent;
   }>();
 
-  // monkeyEmitter.onAny((eventName, params) => {
-  //   console.log(eventName, params);
-  // });
-
   class Monkey {
     private id: number;
     private items: Queue<number>;
@@ -40,7 +36,7 @@ import input from "./input";
       this.id = Number(name.slice("Monkey ".length, -1));
 
       const items = startingItems.split(": ")[1].split(", ").map(Number);
-      this.items = new Queue<number>(items);
+      this.items = new Queue(items);
 
       this.operation = Monkey.getOperation(textOperation);
       this.test = this.getTest(textTest);
@@ -97,7 +93,7 @@ import input from "./input";
 
     private inspect() {
       const item = this.items.dequeue();
-      if (item === undefined) {
+      if (item === null) {
         return;
       }
 

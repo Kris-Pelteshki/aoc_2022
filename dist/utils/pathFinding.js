@@ -18,6 +18,9 @@ class PathFinding {
         const visited = new Map();
         while (queue.size) {
             const currentPoint = queue.dequeue();
+            if (currentPoint === null) {
+                break;
+            }
             const neighbors = this.getNeighbors(this.grid, currentPoint);
             neighbors.forEach((neighbor) => {
                 const neighborKey = neighbor.toString();

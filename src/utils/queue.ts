@@ -1,46 +1,70 @@
+class QueueNode<T> {
+  value: T;
+  next: QueueNode<T> | null;
+
+  constructor(value: T) {
+    this.value = value;
+    this.next = null;
+  }
+}
+
 export class Queue<T> {
-  private items: T[] = [];
-  private head = 0;
-  private tail = 0;
+  private first: QueueNode<T> | null;
+  private last: QueueNode<T> | null;
+  private _length: number;
 
   constructor(items?: T[]) {
-    if (Array.isArray(items)) {
-      this.items = items;
-      this.tail = items.length;
+    this.first = null;
+    this.last = null;
+    this._length = 0;
+
+    if (items) {
+      items.forEach((item) => this.enqueue(item));
     }
   }
 
-  /**
-   * Adds an item to the end of the queue
-   */
-  enqueue(item: T) {
-    this.items[this.tail++] = item;
+  get size(): number {
+    return this._length;
   }
 
-  /**
-   * @returns {T} Returns the item at the front of the queue
-   */
-  dequeue(): T {
-    const item = this.items[this.head];
-    delete this.items[this.head++];
-    return item;
+  enqueue(value: T): Queue<T> {
+    const newNode = new QueueNode(value);
+
+    if (this._length === 0 || !this.last) {
+      this.first = newNode;
+      this.last = newNode;
+    } else {
+      this.last.next = newNode;
+      this.last = newNode;
+    }
+    this._length++;
+    return this;
   }
 
-  peek(): T | undefined {
-    if (this.head === this.tail) {
-      return undefined;
+  dequeue(): T | null {
+    if (!this.first) {
+      return null;
     }
 
-    return this.items[this.head];
+    const returnVal = this.first.value;
+
+    if (this.first === this.last) {
+      this.clear();
+      return returnVal;
+    }
+
+    this.first = this.first.next;
+    this._length--;
+    return returnVal;
   }
 
-  clear() {
-    this.items = [];
-    this.head = 0;
-    this.tail = 0;
+  peek(): T | null {
+    return this.first ? this.first.value : null;
   }
 
-  get size() {
-    return this.tail - this.head;
+  clear(): void {
+    this.first = null;
+    this.last = null;
+    this._length = 0;
   }
 }
