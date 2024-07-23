@@ -1,13 +1,23 @@
-type KeyType = string | number | boolean | Date;
+type KeyIdentifierFunction<T> = (elem: T) => any;
 
-export const groupBy = <T>(
-  iterable: Iterable<T>,
-  keyFn: (elem: T) => KeyType
+type KeyReturnType<T, TKey> = TKey extends KeyIdentifierFunction<T>
+  ? ReturnType<TKey>
+  : TKey extends keyof T
+  ? T[TKey]
+  : never;
+
+export const groupBy = <T, TKey extends keyof T | KeyIdentifierFunction<T>>(
+  iterable: T[],
+  keyIdentifier: TKey
 ) => {
-  const map = new Map<KeyType, T[]>();
+  const map = new Map<KeyReturnType<T, TKey>, T[]>();
 
-  for (const elem of iterable) {
-    const key = keyFn(elem);
+  for (let i = 0; i < iterable.length; i++) {
+    const elem = iterable[i];
+    const key =
+      typeof keyIdentifier === "function"
+        ? keyIdentifier(elem)
+        : elem[keyIdentifier as keyof T];
 
     const collection = map.get(key);
     if (!collection) {
